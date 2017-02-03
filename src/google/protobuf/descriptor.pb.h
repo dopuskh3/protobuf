@@ -2686,6 +2686,13 @@ class LIBPROTOBUF_EXPORT FieldOptions : public ::google::protobuf::Message /* @@
   bool weak() const;
   void set_weak(bool value);
 
+  // optional bool nullable = 7;
+  bool has_nullable() const;
+  void clear_nullable();
+  static const int kNullableFieldNumber = 7;
+  bool nullable() const;
+  void set_nullable(bool value);
+
   GOOGLE_PROTOBUF_EXTENSION_ACCESSORS(FieldOptions)
   // @@protoc_insertion_point(class_scope:google.protobuf.FieldOptions)
  private:
@@ -2701,6 +2708,8 @@ class LIBPROTOBUF_EXPORT FieldOptions : public ::google::protobuf::Message /* @@
   void clear_has_deprecated();
   void set_has_weak();
   void clear_has_weak();
+  void set_has_nullable();
+  void clear_has_nullable();
 
   ::google::protobuf::internal::ExtensionSet _extensions_;
 
@@ -2714,6 +2723,7 @@ class LIBPROTOBUF_EXPORT FieldOptions : public ::google::protobuf::Message /* @@
   bool lazy_;
   bool deprecated_;
   bool weak_;
+  bool nullable_;
   friend struct LIBPROTOBUF_EXPORT protobuf_google_2fprotobuf_2fdescriptor_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
@@ -7314,6 +7324,30 @@ inline void FieldOptions::set_weak(bool value) {
   set_has_weak();
   weak_ = value;
   // @@protoc_insertion_point(field_set:google.protobuf.FieldOptions.weak)
+}
+
+// optional bool nullable = 7;
+inline bool FieldOptions::has_nullable() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void FieldOptions::set_has_nullable() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void FieldOptions::clear_has_nullable() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void FieldOptions::clear_nullable() {
+  nullable_ = false;
+  clear_has_nullable();
+}
+inline bool FieldOptions::nullable() const {
+  // @@protoc_insertion_point(field_get:google.protobuf.FieldOptions.nullable)
+  return nullable_;
+}
+inline void FieldOptions::set_nullable(bool value) {
+  set_has_nullable();
+  nullable_ = value;
+  // @@protoc_insertion_point(field_set:google.protobuf.FieldOptions.nullable)
 }
 
 // repeated .google.protobuf.UninterpretedOption uninterpreted_option = 999;

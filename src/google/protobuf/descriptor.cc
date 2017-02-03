@@ -2805,6 +2805,13 @@ bool FieldDescriptor::is_packed() const {
   }
 }
 
+bool OneofDescriptor::is_nullable() const {
+  if (file_->syntax() == FileDescriptor::SYNTAX_PROTO3) {
+    return options_ == NULL || !options_->has_nullable() || options_->nullable();
+  }
+  return false;
+}
+
 bool Descriptor::GetSourceLocation(SourceLocation* out_location) const {
   std::vector<int> path;
   GetLocationPath(&path);

@@ -801,6 +801,7 @@ class LIBPROTOBUF_EXPORT OneofDescriptor {
 
   // Must be constructed using DescriptorPool.
   OneofDescriptor() {}
+  bool is_nullable() const;
   friend class DescriptorBuilder;
   friend class Descriptor;
   GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(OneofDescriptor);

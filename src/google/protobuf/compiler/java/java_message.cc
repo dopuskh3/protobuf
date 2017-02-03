@@ -482,6 +482,19 @@ void ImmutableMessageGenerator::Generate(io::Printer* printer) {
       "      $oneof_name$Case_);\n"
       "}\n"
       "\n");
+    
+    // Generate HasXX if oneof field is nullable and has only one possible value
+    if(descriptor_->oneof_decl(i)->is_nullable()){
+      if(descriptor_->oneof_decl(i)->field_count() == 1){
+        const FieldDescriptor* field = descriptor_->oneof_decl(i)->field(0);
+        printer->Print(vars,
+            "public boolean has$field_name$ { return false; }\n",
+            "field_name",
+            field->capitalized_name
+            );
+      }
+    }
+
   }
 
   if (IsAnyMessage(descriptor_)) {
